@@ -1,0 +1,21 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fox-Alice/movies-explorer-api.git"
+  },
+  "keywords": [],
+  "author": "Fox-Alice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fox-Alice/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/Fox-Alice/movies-explorer-api#readme"
+}
