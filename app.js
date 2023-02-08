@@ -6,8 +6,13 @@ const dotenv = require('dotenv');
 
 const { errors } = require('celebrate');
 
+const cors = require('cors');
+
 const router = require('./routes');
+
 const errorHandler = require('./middlewares/errors-handler');
+
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.set('strictQuery', true);
 
@@ -17,9 +22,15 @@ const { PORT = 3001, MONGO_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = proc
 
 const app = express();
 
+app.use(cors());
+
 app.use(express.json());
 
+app.use(requestLogger);
+
 app.use('/', router);
+
+app.use(errorLogger);
 
 app.use(errors());
 
