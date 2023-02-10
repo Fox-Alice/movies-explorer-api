@@ -65,9 +65,6 @@ const createUser = (async (req, res, next) => {
     await newUser.save();
     res.status(CREATED).send({
       email: newUser.email,
-      // name: newUser.name,
-      // about: newUser.about,
-      // avatar: newUser.avatar,
     });
   } catch (err) {
     if (err.code === 11000) {

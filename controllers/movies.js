@@ -15,7 +15,6 @@ const {
 const getMovies = (async (req, res, next) => {
   try {
     const movies = await Movie.find({});
-    // .populate(['owner', 'likes']);
     res.status(OK).send(movies);
   } catch (err) {
     next(err);
