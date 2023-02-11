@@ -5,6 +5,9 @@ const Movie = require('../models/Movie');
 const {
   OK,
   CREATED,
+  notFoundCardMessage,
+  deleteCardMessage,
+  NoValidCardIdMessage,
 } = require('../constants');
 const {
   BadRequestError,
@@ -14,7 +17,7 @@ const {
 
 const getMovies = (async (req, res, next) => {
   try {
-    const movies = await Movie.find({});
+    const movies = await Movie.find({ owner: req.user._id });
     res.status(OK).send(movies);
   } catch (err) {
     next(err);
@@ -63,9 +66,9 @@ const deleteMovie = (async (req, res, next) => {
     const { id } = req.params;
     const movie = await Movie.findById(id);
     if (!movie) {
-      next(new NotFoundError('Карточка не найдена'));
+      next(new NotFoundError(notFoundCardMessage));
     } else if (!movie.owner.equals(req.user._id)) {
-      next(new ForbiddenError('Чужие фильмы удалять нельзя!'));
+      next(new ForbiddenError(deleteCardMessage));
     } else {
       await movie.remove();
       const movies = await Movie.find({});
@@ -73,7 +76,7 @@ const deleteMovie = (async (req, res, next) => {
     }
   } catch (err) {
     if (err instanceof mongoose.Error.CastError) {
-      next(new BadRequestError('Невалидный id карточки'));
+      next(new BadRequestError(NoValidCardIdMessage));
     } else { next(err); }
   }
 });

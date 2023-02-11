@@ -17,13 +17,16 @@ const {
   OK,
   CREATED,
   SALT_ROUNDS,
+  notFoudUserMessage,
+  conflictErrorMessage,
+  validationErrorMessage,
 } = require('../constants');
 
 const getUser = (async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id);
     if (!user) {
-      throw new NotFoundError('Пользователь не найден');
+      throw new NotFoundError(notFoudUserMessage);
     } else {
       res.status(OK).send(user);
     }
@@ -40,7 +43,7 @@ const updateProfile = (async (req, res, next) => {
         about: req.body.about,
       }, { new: true, runValidators: true });
     if (!user) {
-      throw new NotFoundError('Пользователь не найден');
+      throw new NotFoundError(notFoudUserMessage);
     } else {
       res.status(OK).send(user);
     }
@@ -68,9 +71,9 @@ const createUser = (async (req, res, next) => {
     });
   } catch (err) {
     if (err.code === 11000) {
-      next(new ConflictError('Пользователь уже существует'));
+      next(new ConflictError(conflictErrorMessage));
     } else if (err instanceof mongoose.Error.ValidationError) {
-      next(new BadRequestError('Ошибка валидации'));
+      next(new BadRequestError(validationErrorMessage));
     } else { next(err); }
   }
 }

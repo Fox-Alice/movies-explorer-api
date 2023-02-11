@@ -9,6 +9,13 @@ const CONFLICT = 409;
 
 const SALT_ROUNDS = 10;
 
+const notFoudUserMessage = 'Пользователь не найден';
+const conflictErrorMessage = 'Пользователь уже существует';
+const validationErrorMessage = 'Ошибка валидации';
+const notFoundCardMessage = 'Карточка не найдена';
+const deleteCardMessage = 'Чужие фильмы удалять нельзя!';
+const NoValidCardIdMessage = 'Невалидный id карточки';
+
 module.exports = {
   OK,
   CREATED,
@@ -19,4 +26,10 @@ module.exports = {
   INTERNAL_SERVER_ERR,
   CONFLICT,
   SALT_ROUNDS,
+  notFoudUserMessage,
+  notFoundCardMessage,
+  deleteCardMessage,
+  NoValidCardIdMessage,
+  conflictErrorMessage,
+  validationErrorMessage,
 };
