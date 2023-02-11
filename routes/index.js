@@ -7,6 +7,7 @@ const { validateRegisterBody, validateLoginBody } = require('../middlewares/vali
 
 const { createUser, login } = require('../controllers/users');
 const { NotFoundError } = require('../errors');
+const { notFoundErrorMessage } = require('../constants');
 
 router.use('/signin', validateLoginBody, login);
 
@@ -17,7 +18,7 @@ router.use('/users', auth, userRouter);
 router.use('/movies', auth, movieRouter);
 
 router.use('/*', auth, ((req, res, next) => {
-  next(new NotFoundError('Страница не найдена'));
+  next(new NotFoundError(notFoundErrorMessage));
 }));
 
 module.exports = router;

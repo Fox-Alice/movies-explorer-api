@@ -14,6 +14,8 @@ const errorHandler = require('./middlewares/errors-handler');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
+const { rateLimiter } = require('./middlewares/rateLimiter');
+
 mongoose.set('strictQuery', true);
 
 dotenv.config();
@@ -27,6 +29,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use(requestLogger);
+
+app.use(rateLimiter);
 
 app.use('/', router);
 

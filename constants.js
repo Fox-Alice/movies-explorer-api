@@ -15,6 +15,10 @@ const validationErrorMessage = 'Ошибка валидации';
 const notFoundCardMessage = 'Карточка не найдена';
 const deleteCardMessage = 'Чужие фильмы удалять нельзя!';
 const NoValidCardIdMessage = 'Невалидный id карточки';
+const UnauthorizedErrorMessage = 'Необходима авторизация';
+const ForbiddenErrorMessage = 'Нет доступа';
+const serverErrorMessage = 'Ошибка сервера';
+const notFoundErrorMessage = 'Страница не найдена';
 
 module.exports = {
   OK,
@@ -32,4 +36,8 @@ module.exports = {
   NoValidCardIdMessage,
   conflictErrorMessage,
   validationErrorMessage,
+  UnauthorizedErrorMessage,
+  ForbiddenErrorMessage,
+  serverErrorMessage,
+  notFoundErrorMessage,
 };
