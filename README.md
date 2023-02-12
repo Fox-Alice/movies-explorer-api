@@ -1,1 +1,2 @@
-# movies-explorer-api
+# Бэкенд дипломного проекта 
+к проекту можно обратиться api.foxalice.nomoredomains.work
