@@ -58,15 +58,16 @@ const updateProfile = (async (req, res, next) => {
 const createUser = (async (req, res, next) => {
   try {
     const {
-      email, password,
+      name, email, password,
     } = req.body;
     const hash = await bcrypt.hash(password, SALT_ROUNDS);
     const newUser = await new User({
-      email, password: hash,
+      name, email, password: hash,
     });
 
     await newUser.save();
     res.status(CREATED).send({
+      name: newUser.name,
       email: newUser.email,
     });
   } catch (err) {
