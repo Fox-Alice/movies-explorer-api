@@ -23,7 +23,6 @@ const userSchema = new mongoose.Schema({
     minlength: [2, 'Минимальное количество символов 2'],
     maxlength: [30, 'Максимальное количество символов 30'],
     type: String,
-    default: 'Имя пользователя',
   },
 });
 
