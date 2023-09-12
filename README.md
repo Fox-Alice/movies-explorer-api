@@ -6,4 +6,4 @@
 4. Реализация логирования
 5. Деплой
    
-# к проекту можно обратиться api.foxalice.nomoredomains.work
+ к проекту можно обратиться api.foxalice.nomoredomains.work
